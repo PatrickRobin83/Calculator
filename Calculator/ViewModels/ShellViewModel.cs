@@ -10,6 +10,7 @@
  * @Version      1.0.0
  */
 
+using Calculator.Core.Calculations;
 using Calculator.ViewModels.Base;
 using Prism.Commands;
 
@@ -17,11 +18,11 @@ namespace Calculator.ViewModels
 {
     public class ShellViewModel : ViewModelBase
     {
-
-
         #region Fields
 
         private string expression;
+        private readonly ICalculator _calculator;
+        private bool hasCalculated = false;
 
         #endregion
 
@@ -40,9 +41,9 @@ namespace Calculator.ViewModels
 
         #region Constructor
 
-        public ShellViewModel()
+        public ShellViewModel(ICalculator calculator)
         {
-            
+            _calculator = calculator;
         }
 
         #endregion
@@ -53,17 +54,28 @@ namespace Calculator.ViewModels
         {
             AddNumberCommand = new DelegateCommand<string>(AddNumber);
             ClearCommand = new DelegateCommand<string>(Clear);
-            //EqualsCommand = new DelegateCommand<string>();
+            EqualsCommand = new DelegateCommand<string>(Calculate);
         }
 
-        private void Clear(string obj)
+        private void Calculate(string obj)
+        {
+            Expression = _calculator.Calculate(Expression).ToString("N2");
+            hasCalculated = true;
+        }
+
+        private void Clear()
         {
             Expression = string.Empty;
         }
 
         private void AddNumber(string buttonValue)
         {
-            Expression += buttonValue;
+            if (hasCalculated)
+            {
+                Clear();
+                hasCalculated = false;
+            }
+            Expression += buttonValue.ToString();
         }
 
         #endregion

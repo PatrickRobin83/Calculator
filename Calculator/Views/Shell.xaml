@@ -63,7 +63,7 @@
         <Button Grid.Row="3" Grid.Column="2" Content="5"/>
         <Button Grid.Row="3" Grid.Column="3" Content="6"/>
         <Button Grid.Row="3" Grid.Column="4" Content="-"/>
-        <Button Grid.Row="3" Grid.Column="5" Content="="/>
+        <Button Grid.Row="3" Grid.Column="5" Content="=" Command="{Binding EqualsCommand}"/>
 
         <Button Grid.Row="4" Grid.Column="1" Content="1"/>
         <Button Grid.Row="4" Grid.Column="2" Content="2"/>
