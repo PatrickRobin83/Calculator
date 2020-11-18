@@ -11,6 +11,7 @@
  */
 
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Calculator.Models;
 using Calculator.ViewModels.Interfaces;
 
@@ -34,9 +35,14 @@ namespace Calculator.ViewModels.Base
 
         #region Methods
 
+        public override void RegisterCollections()
+        {
+            Calculations = new ObservableCollection<Calculation>();
+        }
+
         #endregion
 
         public abstract string CalculatorType { get; }
-        public ICollection<Calculation> Calculations { get; }
+        public ICollection<Calculation> Calculations { get; protected set; }
     }
 }

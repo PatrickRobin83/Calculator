@@ -27,8 +27,8 @@ namespace Calculator.Core.Constants
 
         public static CalculatorType[] CalculatorTypes = new[]
         {
-            CalculatorType.Create("Basic", "BasicCalculator"),
-            CalculatorType.Create("Scientific", "ScientificCalculator"), 
+            CalculatorType.Create("Basic", "BasicCalculatorViewModel"),
+            CalculatorType.Create("Scientific", "ScientificCalculatorViewModel")
         };
 
         #endregion

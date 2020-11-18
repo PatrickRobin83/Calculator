@@ -21,8 +21,8 @@ namespace Calculator.Models
 
         #region Properties
 
-        public string DisplayName { get; private set; }
-        public string TypeName { get; private set; }
+        public string DisplayName { get; }
+        public string TypeName { get; }
 
 
         #endregion
@@ -38,9 +38,9 @@ namespace Calculator.Models
 
         #region Methods
 
-        public static CalculatorType Create(string dispplayName, string typeName)
+        public static CalculatorType Create(string displayName, string typeName)
         {
-            return new CalculatorType(dispplayName, typeName);
+            return new CalculatorType(displayName, typeName);
         }
         #endregion
 

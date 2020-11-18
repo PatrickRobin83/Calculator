@@ -10,6 +10,7 @@
  * @Version      1.0.0
  */
 
+using System.Windows;
 using Calculator.Core.Calculations;
 using Calculator.Core.Helpers;
 using Calculator.Models;
@@ -22,10 +23,11 @@ namespace Calculator.ViewModels
 {
     public class ShellViewModel : ViewModelBase
     {
-        private readonly IContainerHelper _containerHelper;
+        
 
         #region Fields
         private ICalculatorViewModel selectedCalculatorViewModel;
+        private readonly IContainerHelper _containerHelper;
         private bool flyOutOpen;
 
         #endregion
@@ -61,10 +63,12 @@ namespace Calculator.ViewModels
             CalculatorChangedCommand = new DelegateCommand<CalculatorType>(CalculatorChanged);
         }
 
+
         private void CalculatorChanged(CalculatorType calculatorType)
         {
             var newCalculator = (ICalculatorViewModel) _containerHelper.Create(calculatorType.TypeName);
             SelectedCalculatorViewModel = newCalculator;
+            FlyOutOpen = false;
         }
 
         private void OpenFlyOut()
@@ -75,7 +79,7 @@ namespace Calculator.ViewModels
 
         #region Commands
         public DelegateCommand OpenFlyOutCommand { get; set; }
-        public DelegateCommand<CalculatorType> CalculatorChangedCommand;
+        public DelegateCommand<CalculatorType> CalculatorChangedCommand { get; set; }
 
         #endregion
 

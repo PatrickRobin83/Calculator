@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using Calculator.Core.Calculations;
 using Calculator.Core.Helpers;
+using Calculator.Models;
 using Prism.Ioc;
 using Prism.Unity;
 using Calculator.Views;
@@ -21,7 +22,7 @@ namespace Calculator
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<ICalculator, ExpressionCalculator>();
-            containerRegistry.RegisterSingleton<ContainerHelper>();
+            containerRegistry.RegisterSingleton<IContainerHelper, ContainerHelper>();
         }
 
 

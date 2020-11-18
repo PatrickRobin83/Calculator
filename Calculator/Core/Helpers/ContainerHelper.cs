@@ -20,7 +20,7 @@ namespace Calculator.Core.Helpers
 {
     public class ContainerHelper : IContainerHelper
     {
-        private readonly UnityContainer _container;
+        private readonly IUnityContainer _container;
 
 
         #region Fields
@@ -33,7 +33,7 @@ namespace Calculator.Core.Helpers
 
         #region Constructor
 
-        public ContainerHelper(UnityContainer container)
+        public ContainerHelper(IUnityContainer container)
         {
             _container = container;
         }

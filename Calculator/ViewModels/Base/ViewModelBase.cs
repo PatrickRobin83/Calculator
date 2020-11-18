@@ -32,14 +32,13 @@ namespace Calculator.ViewModels.Base
             RegisterCommands();
         }
 
-        protected virtual void RegisterCommands()
-        {
-            
-        }
-
         #endregion
 
         #region Methods
+
+        protected virtual void RegisterCommands(){ }
+
+        public virtual void RegisterCollections(){ }
 
         #endregion
 
