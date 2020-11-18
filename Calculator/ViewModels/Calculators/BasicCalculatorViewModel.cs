@@ -16,7 +16,7 @@ using Prism.Commands;
 
 namespace Calculator.ViewModels.Calculators
 {
-    public class BasicCalculatorViewModel :ViewModelBase
+    public class BasicCalculatorViewModel : CalculatorViewModelBase
     {
 
 
@@ -29,12 +29,12 @@ namespace Calculator.ViewModels.Calculators
         #endregion
 
         #region Properties
-        public string Title { get; } = "Cool Calculator";
         public string Expression
         {
             get { return expression; }
             set { SetProperty(ref expression, value); }
         }
+        public override string CalculatorType => "Basic";
 
         #endregion
 
@@ -84,6 +84,5 @@ namespace Calculator.ViewModels.Calculators
         public DelegateCommand<string> EqualsCommand { get; set; }
 
         #endregion
-
     }
 }

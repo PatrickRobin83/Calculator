@@ -1,15 +1,15 @@
 ﻿using System.Windows;
-using System.Xaml;
 using Calculator.Core.Calculations;
+using Calculator.Core.Helpers;
 using Prism.Ioc;
 using Prism.Unity;
 using Calculator.Views;
-using Unity;
+using Unity.Lifetime;
 
 namespace Calculator
 {
     /// <summary>
-    /// Interaktionslogik für "App.xaml"
+    ///Interaktionslogik für "App.xaml"
     /// </summary>
     public partial class App : PrismApplication
     {
@@ -21,12 +21,13 @@ namespace Calculator
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.Register<ICalculator, ExpressionCalculator>();
+            containerRegistry.RegisterSingleton<ContainerHelper>();
         }
+
 
         protected override void InitializeShell(Window shell)
         {
             Application.Current.MainWindow?.Show();
         }
-
     }
 }
