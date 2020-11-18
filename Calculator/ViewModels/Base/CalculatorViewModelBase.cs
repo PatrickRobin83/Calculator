@@ -19,13 +19,15 @@ namespace Calculator.ViewModels.Base
 {
     public abstract class CalculatorViewModelBase : ViewModelBase, ICalculatorViewModel
     {
-        
+
 
         #region Fields
 
         #endregion
 
         #region Properties
+        public abstract string CalculatorType { get; }
+        public abstract ICollection<Calculation> Calculations { get; protected set; }
 
         #endregion
 
@@ -42,7 +44,5 @@ namespace Calculator.ViewModels.Base
 
         #endregion
 
-        public abstract string CalculatorType { get; }
-        public ICollection<Calculation> Calculations { get; protected set; }
     }
 }

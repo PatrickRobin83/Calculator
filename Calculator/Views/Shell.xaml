@@ -40,6 +40,9 @@
                 </i:Interaction.Triggers>
             </ListBox>
         </mah:Flyout>
+        <mah:Flyout Position="Bottom" IsOpen="{Binding FlyoutOpen}">
+            <ListBox ItemsSource="{Binding SelectedCalculatorViewModel.Calculations}"></ListBox>
+        </mah:Flyout>
     </Grid>
     
 </mah:MetroWindow>
