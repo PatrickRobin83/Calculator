@@ -12,6 +12,7 @@
 
 using Calculator.Core.Calculations;
 using Calculator.ViewModels.Base;
+using Calculator.ViewModels.Calculators;
 using Prism.Commands;
 
 namespace Calculator.ViewModels
@@ -19,74 +20,32 @@ namespace Calculator.ViewModels
     public class ShellViewModel : ViewModelBase
     {
         #region Fields
-
-        private string expression;
-        private readonly ICalculator _calculator;
-        private bool hasCalculated = false;
-
+        private ViewModelBase selectedCalculatorViewModel;
         #endregion
 
         #region Properties
-
-
-
-        public string Title { get; } = "Cool Calculator";
-        public string Expression
+        public ViewModelBase SelectedCalculatorViewModel
         {
-            get { return expression; }
-            set { SetProperty(ref expression, value); }
+            get { return selectedCalculatorViewModel; }
+            set { SetProperty(ref selectedCalculatorViewModel, value); }
         }
-
         #endregion
 
         #region Constructor
 
         public ShellViewModel(ICalculator calculator)
         {
-            _calculator = calculator;
+            var viewModel = new BasicCalculatorViewModel(calculator);
+            SelectedCalculatorViewModel = viewModel;
         }
-
         #endregion
 
         #region Methods
 
-        protected override void RegisterCommands()
-        {
-            AddNumberCommand = new DelegateCommand<string>(AddNumber);
-            ClearCommand = new DelegateCommand<string>(Clear);
-            EqualsCommand = new DelegateCommand<string>(Calculate);
-        }
-
-        private void Calculate(string obj)
-        {
-            Expression = _calculator.Calculate(Expression).ToString("N2");
-            hasCalculated = true;
-        }
-
-        private void Clear()
-        {
-            Expression = string.Empty;
-        }
-
-        private void AddNumber(string buttonValue)
-        {
-            if (hasCalculated)
-            {
-                Clear();
-                hasCalculated = false;
-            }
-            Expression += buttonValue.ToString();
-        }
-
         #endregion
 
         #region Commands
-
-        public DelegateCommand<string> AddNumberCommand { get; set; }
-        public DelegateCommand<string> ClearCommand { get; set; }
-
-        public DelegateCommand<string> EqualsCommand { get; set; }
-
+        
         #endregion
 
     }

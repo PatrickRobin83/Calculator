@@ -1,0 +1,65 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:viewModels="clr-namespace:Calculator.ViewModels.Calculators">
+
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="../Buttons/Keypad.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+
+    <DataTemplate DataType="{x:Type viewModels:BasicCalculatorViewModel}">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="*"/>
+
+                <RowDefinition  Height="Auto"/>
+                <RowDefinition  Height="Auto"/>
+                <RowDefinition  Height="Auto"/>
+                <RowDefinition  Height="Auto"/>
+                <RowDefinition  Height="Auto"/>
+                <RowDefinition  Height="Auto"/>
+
+                <RowDefinition  Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Text="{Binding Expression}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="1" />
+
+            <Button Grid.Row="2" Grid.Column="1" Content="7"/>
+            <Button Grid.Row="2" Grid.Column="2" Content="8"/>
+            <Button Grid.Row="2" Grid.Column="3" Content="9"/>
+            <Button Grid.Row="2" Grid.Column="4" Content="+"/>
+            <Button Grid.Row="2" Grid.Column="5" Content="CE" Command="{Binding ClearCommand}"/>
+
+            <Button Grid.Row="3" Grid.Column="1" Content="4"/>
+            <Button Grid.Row="3" Grid.Column="2" Content="5"/>
+            <Button Grid.Row="3" Grid.Column="3" Content="6"/>
+            <Button Grid.Row="3" Grid.Column="4" Content="-"/>
+            <Button Grid.Row="3" Grid.Column="5" Content="=" Command="{Binding EqualsCommand}"/>
+
+            <Button Grid.Row="4" Grid.Column="1" Content="1"/>
+            <Button Grid.Row="4" Grid.Column="2" Content="2"/>
+            <Button Grid.Row="4" Grid.Column="3" Content="3"/>
+            <Button Grid.Row="4" Grid.Column="4" Content="x"/>
+
+            <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Content="0"/>
+            <Button Grid.Row="5" Grid.Column="3" Content=","/>
+            <Button Grid.Row="5" Grid.Column="4" Content="/"/>
+
+        </Grid>
+
+    </DataTemplate>
+
+</ResourceDictionary>
