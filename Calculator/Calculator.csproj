@@ -101,8 +101,11 @@
     <Compile Include="Core\Constants\Calculators.cs" />
     <Compile Include="Core\Helpers\ContainerHelper.cs" />
     <Compile Include="Core\Helpers\IContainerHelper.cs" />
+    <Compile Include="Models\Button.cs" />
     <Compile Include="Models\Calculation.cs" />
+    <Compile Include="Models\CalculatorButton.cs" />
     <Compile Include="Models\CalculatorType.cs" />
+    <Compile Include="Models\SuperScriptButton.cs" />
     <Compile Include="ViewModels\Base\CalculatorViewModelBase.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\Calculators\BasicCalculatorViewModel.cs" />
@@ -154,7 +157,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\Calculators\ScientificCalculatorView.xaml">
+    <Page Include="Styles\Calculators\ScientificCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

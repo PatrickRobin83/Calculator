@@ -20,6 +20,10 @@ namespace Calculator.ViewModels.Interfaces
     public interface ICalculatorViewModel
     {
         string CalculatorType { get; }
+
+        int Height { get; set; }
+        int Width { get; set; }
+
         ICollection<Calculation> Calculations { get; }
     }
 

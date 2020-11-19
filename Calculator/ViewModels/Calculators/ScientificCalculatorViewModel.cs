@@ -21,11 +21,19 @@ namespace Calculator.ViewModels.Calculators
 
         #region Fields
 
+        private string _calculatedExpression;
         #endregion
 
         #region Properties
 
         public override string CalculatorType => "Scientific";
+        public override int Height { get; set; } = 550;
+        public override int Width { get; set; } = 350;
+        public string CalculatedExpression
+        {
+            get { return _calculatedExpression; }
+            set { SetProperty(ref _calculatedExpression, value); }
+        }
 
         #endregion
 
@@ -37,6 +45,13 @@ namespace Calculator.ViewModels.Calculators
         #endregion
 
         #region Methods
+
+        protected override void Calculate()
+        {
+            CalculatedExpression = Expression;
+            base.Calculate();
+
+        }
 
         #endregion
 

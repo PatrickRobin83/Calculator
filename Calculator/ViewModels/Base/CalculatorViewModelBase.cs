@@ -21,9 +21,6 @@ namespace Calculator.ViewModels.Base
 {
     public abstract class CalculatorViewModelBase : ViewModelBase, ICalculatorViewModel
     {
-
-
-
         #region Fields
         private readonly ICalculator calculator;
         private string expression;
@@ -32,6 +29,8 @@ namespace Calculator.ViewModels.Base
 
         #region Properties
         public abstract string CalculatorType { get; }
+        public abstract int Height { get; set; }
+        public abstract int Width { get; set; }
         public ICollection<Calculation> Calculations { get; protected set; }
         public string Expression
         {
@@ -57,7 +56,7 @@ namespace Calculator.ViewModels.Base
             Calculations = new ObservableCollection<Calculation>();
         }
 
-        private void Calculate()
+        protected virtual void Calculate()
         {
             var value = calculator.Calculate(Expression).ToString("N2");
             var calculation = new Calculation(Expression, value);
@@ -73,12 +72,12 @@ namespace Calculator.ViewModels.Base
             EqualsCommand = new DelegateCommand(Calculate);
         }
 
-        private void Clear(string ex)
+        protected virtual void Clear(string ex)
         {
             Expression = string.Empty;
         }
 
-        private void AddNumber(string buttonValue)
+        protected virtual void AddNumber(string buttonValue)
         {
             if (HasCalculated)
             {

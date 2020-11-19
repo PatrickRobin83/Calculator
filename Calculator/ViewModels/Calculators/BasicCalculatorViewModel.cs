@@ -25,6 +25,9 @@ namespace Calculator.ViewModels.Calculators
 
         #region Properties
         public override string CalculatorType => "Basic";
+        public override int Height { get; set; } = 400;
+        public override int Width { get; set; } = 350;
+
         #endregion
 
         #region Constructor

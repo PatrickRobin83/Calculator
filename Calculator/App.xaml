@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/Packages/MahBindings.xaml"/>
                 <ResourceDictionary Source="../Styles/Calculators/BasicCalculator.xaml"/>
+                <ResourceDictionary Source="../Styles/Calculators/ScientificCalculator.xaml"/>
                 <ResourceDictionary Source="../Styles/Buttons/MenuButtons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
