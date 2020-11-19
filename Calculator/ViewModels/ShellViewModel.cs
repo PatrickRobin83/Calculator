@@ -10,7 +10,9 @@
  * @Version      1.0.0
  */
 
+using System;
 using System.Windows;
+using System.Windows.Documents;
 using Calculator.Core.Calculations;
 using Calculator.Core.Helpers;
 using Calculator.Models;
@@ -27,8 +29,9 @@ namespace Calculator.ViewModels
 
         #region Fields
         private ICalculatorViewModel selectedCalculatorViewModel;
-        private readonly IContainerHelper _containerHelper;
-        private bool flyOutOpen;
+        private readonly IContainerHelper containerHelper;
+        private bool selectedCalculatorFlyOutOpen;
+        private bool historyFlyoutOpen;
 
         #endregion
 
@@ -38,11 +41,18 @@ namespace Calculator.ViewModels
             get { return selectedCalculatorViewModel; }
             set { SetProperty(ref selectedCalculatorViewModel, value); }
         }
-        public bool FlyOutOpen
+        public bool SelectCalculatorFlyOutOpen
         {
-            get { return flyOutOpen; }
-            set { SetProperty(ref flyOutOpen, value); }
+            get { return selectedCalculatorFlyOutOpen; }
+            set { SetProperty(ref selectedCalculatorFlyOutOpen, value); }
         }
+
+        public bool HistoryFlyoutOpen
+        {
+            get { return historyFlyoutOpen; }
+            set { SetProperty(ref historyFlyoutOpen, value); }
+        }
+
         public string Title { get; } = "Cool Calculator";
 
         #endregion
@@ -51,7 +61,8 @@ namespace Calculator.ViewModels
 
         public ShellViewModel(IContainerHelper containerHelper)
         {
-            _containerHelper = containerHelper;
+            this.containerHelper = containerHelper;
+            CalculatorChanged(Calculator.Core.Constants.Calculators.Basic);
         }
         #endregion
 
@@ -59,26 +70,36 @@ namespace Calculator.ViewModels
 
         protected override void RegisterCommands()
         {
-            OpenFlyOutCommand = new DelegateCommand(OpenFlyOut);
+            OpenFlyOutCommand = new DelegateCommand<string>(OpenFlyOut);
             CalculatorChangedCommand = new DelegateCommand<CalculatorType>(CalculatorChanged);
         }
 
 
         private void CalculatorChanged(CalculatorType calculatorType)
         {
-            var newCalculator = (ICalculatorViewModel) _containerHelper.Create(calculatorType.TypeName);
+            var newCalculator = (ICalculatorViewModel) containerHelper.Create(calculatorType.TypeName);
             SelectedCalculatorViewModel = newCalculator;
-            FlyOutOpen = false;
+            SelectCalculatorFlyOutOpen = false;
         }
 
-        private void OpenFlyOut()
+        private void OpenFlyOut(string propertyName)
         {
-            FlyOutOpen = true;
+            var property = GetType().GetProperty(propertyName);
+            bool isOpen = Convert.ToBoolean(property.GetValue(this));
+
+            if (isOpen)
+            {
+                property.SetValue(this, false);
+            }
+            else
+            {
+                property.SetValue(this, true);
+            }
         }
         #endregion
 
         #region Commands
-        public DelegateCommand OpenFlyOutCommand { get; set; }
+        public DelegateCommand<string> OpenFlyOutCommand { get; set; }
         public DelegateCommand<CalculatorType> CalculatorChangedCommand { get; set; }
 
         #endregion

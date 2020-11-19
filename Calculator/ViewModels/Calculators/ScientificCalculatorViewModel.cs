@@ -8,6 +8,9 @@
 * @author Patrick Robin <support@rietrob.de>
 */
 
+using System.Collections.Generic;
+using Calculator.Core.Calculations;
+using Calculator.Models;
 using Calculator.ViewModels.Base;
 
 namespace Calculator.ViewModels.Calculators
@@ -28,6 +31,9 @@ namespace Calculator.ViewModels.Calculators
 
         #region Constructor
 
+        public ScientificCalculatorViewModel(ICalculator calculator) : base(calculator)
+        {
+        }
         #endregion
 
         #region Methods

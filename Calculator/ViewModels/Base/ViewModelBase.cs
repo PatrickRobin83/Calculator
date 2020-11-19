@@ -30,6 +30,7 @@ namespace Calculator.ViewModels.Base
         public ViewModelBase()
         {
             RegisterCommands();
+            RegisterCollections();
         }
 
         #endregion

@@ -24,11 +24,13 @@ namespace Calculator.Core.Constants
         #endregion
 
         #region Properties
+        public static CalculatorType Basic => CalculatorType.Create("Basic", "BasicCalculatorViewModel");
+        public static CalculatorType Scientific => CalculatorType.Create("Scientific", "ScientificCalculatorViewModel");
 
         public static CalculatorType[] CalculatorTypes = new[]
         {
-            CalculatorType.Create("Basic", "BasicCalculatorViewModel"),
-            CalculatorType.Create("Scientific", "ScientificCalculatorViewModel")
+            Basic,
+            Scientific
         };
 
         #endregion

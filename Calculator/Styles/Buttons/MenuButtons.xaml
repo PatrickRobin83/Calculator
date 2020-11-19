@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Calculator.Styles.Buttons">
+
+    <Style x:Key="MenuButton" TargetType="Button">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    
+</ResourceDictionary>
